@@ -38,3 +38,7 @@ if(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/opencv/include")
     CMAKE_ARGS ${OPENCV_CMAKE_ARGS}
   )
 endif()
+
+# electron
+
+file(ARCHIVE_EXTRACT INPUT ${CMAKE_CURRENT_SOURCE_DIR}/electron/electron-v1.3.4-darwin-x64.zip DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/electron/electron-v1.3.4-darwin-x64)
