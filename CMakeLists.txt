@@ -33,7 +33,7 @@ SET(OPENCV_CMAKE_ARGS -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX:STRING
 if(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/opencv/include")
   ExternalProject_Add(opencv
     GIT_REPOSITORY git@github.com:opencv/opencv.git
-    GIT_TAG 70bbf17
+    GIT_TAG 4af3ca4
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/opencv
     CMAKE_ARGS ${OPENCV_CMAKE_ARGS}
   )
