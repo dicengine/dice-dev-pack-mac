@@ -9,6 +9,15 @@ MESSAGE(STATUS "Using C compiler: ${CMAKE_C_COMPILER}")
 MESSAGE(STATUS "Using C++ compiler: ${CMAKE_CXX_COMPILER}")
 MESSAGE(STATUS "Using Fortran compiler: ${CMAKE_Fortran_COMPILER}")
 
+if(NOT DEFINED OPENCV_GIT_TAG)
+  SET(OPENCV_GIT_TAG 4af3ca4)
+endif()
+MESSAGE(STATUS "Using OPENCV_GIT_TAG: ${OPENCV_GIT_TAG})
+if(NOT DEFINED TRILINOS_GIT_TAG)
+  SET(TRILINOS_GIT_TAG 094e4a2)
+endif()
+MESSAGE(STATUS "Using TRILINOS_GIT_TAG: ${TRILINOS_GIT_TAG})
+
 include(ExternalProject)
 
 # Trilinos
@@ -19,7 +28,7 @@ SET(TRILINOS_CMAKE_ARGS -D CMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}
 if(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/trilinos/include")
   ExternalProject_Add(trilinos
     GIT_REPOSITORY git@github.com:trilinos/Trilinos.git
-    GIT_TAG 094e4a2
+    GIT_TAG ${TRILINOS_GIT_TAG}
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/trilinos
     CMAKE_ARGS ${TRILINOS_CMAKE_ARGS}
   )
@@ -33,13 +42,11 @@ SET(OPENCV_CMAKE_ARGS -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX:STRING
 if(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/opencv/include")
   ExternalProject_Add(opencv
     GIT_REPOSITORY git@github.com:opencv/opencv.git
-    GIT_TAG 4af3ca4
+    GIT_TAG ${OPENCV_GIT_TAG}
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/opencv
     CMAKE_ARGS ${OPENCV_CMAKE_ARGS}
   )
 endif()
-
-#e8d4259
 
 # electron
 
