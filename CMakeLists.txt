@@ -52,7 +52,10 @@ if((NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/opencv/include") AND ${BUILD_OPENCV}
     GIT_REPOSITORY git@github.com:opencv/opencv.git
     GIT_TAG ${OPENCV_GIT_TAG}
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/opencv
-    CMAKE_ARGS ${OPENCV_CMAKE_ARGS}
+    CMAKE_ARGS   ${OPENCV_CMAKE_ARGS}
+    DOWNLOAD_DIR ${CMAKE_CURRENT_BINARY_DIR}/opencv
+    TMP_DIR      ${CMAKE_CURRENT_BINARY_DIR}/opencv/tmp
+    STAMP_DIR    ${CMAKE_CURRENT_BINARY_DIR}/opencv/tmp/stamp
   )
 endif()
 
